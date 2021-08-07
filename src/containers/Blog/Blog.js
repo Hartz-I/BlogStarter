@@ -30,9 +30,11 @@ class Blog extends Component {
   }
 
   render() {
+    //map what the posts are
     const posts = this.state.posts.map((post) => {
       return <Post title={post.title} key={post.id} author={post.author} />;
     });
+
     return (
       <div>
         <section className="Posts">{posts}</section>
