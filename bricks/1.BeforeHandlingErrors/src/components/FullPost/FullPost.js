@@ -17,19 +17,23 @@ class FullPost extends Component {
         (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
       )
         //getting data based on id
-        axios.get("/posts/" + this.props.id).then((response) => {
-          //   console.log(response);
+        axios
+          .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
+          .then((response) => {
+            //   console.log(response);
 
-          this.setState({ loadedPost: response.data });
-        });
+            this.setState({ loadedPost: response.data });
+          });
     }
   }
 
   deletePostHandler = () => {
     //sending delete request is also easy
-    axios.delete("/posts/" + this.props.id).then((response) => {
-      console.log(response);
-    });
+    axios
+      .delete("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   render() {
@@ -41,7 +45,7 @@ class FullPost extends Component {
 
     //this shouldn't be id check cuz we wanna only load when loaded post is fetched
     if (this.state.loadedPost) {
-      //console.log(this.state.loadedPost);
+      console.log(this.state.loadedPost);
       //null treated as false and not null is true
       post = (
         <div className="FullPost">

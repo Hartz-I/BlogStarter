@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axiosInstance from "../../axiosInstance";
+import axios from "axios";
 import Post from "../../components/Post/Post";
 import FullPost from "../../components/FullPost/FullPost";
 import NewPost from "../../components/NewPost/NewPost";
@@ -9,12 +9,11 @@ class Blog extends Component {
   state = {
     posts: [],
     selectedPostId: null,
-    error: false,
   };
 
   componentDidMount() {
-    axiosInstance
-      .get("/posts") //short cuz URL is set default
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
       //then executes after the request is finished
       .then((resnponse) => {
         const posts = resnponse.data.slice(0, 4); //to get relive from too many data
@@ -27,13 +26,7 @@ class Blog extends Component {
 
         //set state won't work outside cuz JS doesn't work while the data is fetched
         this.setState({ posts: updatedPosts });
-        //console.log(resnponse); ///see what's inside
-      })
-      .catch((error) => {
-        //handles error locally
-        //console.log(error);
-        //global handling is in index.js
-        this.setState({ error: true });
+        console.log(resnponse); ///see what's inside
       });
   }
 
@@ -42,23 +35,19 @@ class Blog extends Component {
   };
 
   render() {
-    //using catch error we can render when error is made!
-    let posts = <p>Something went wrong!!</p>;
     //map what the posts are
-    if (!this.state.error) {
-      posts = this.state.posts.map((post) => {
-        return (
-          <Post
-            title={post.title}
-            key={post.id}
-            author={post.author}
-            clicked={() => {
-              this.postSelectedHandler(post.id);
-            }}
-          />
-        );
-      });
-    }
+    const posts = this.state.posts.map((post) => {
+      return (
+        <Post
+          title={post.title}
+          key={post.id}
+          author={post.author}
+          clicked={() => {
+            this.postSelectedHandler(post.id);
+          }}
+        />
+      );
+    });
 
     return (
       <div>
