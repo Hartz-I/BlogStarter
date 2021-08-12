@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Post from "../../components/Post/Post";
 // import FullPost from "../FullPost/FullPost";
 // import NewPost from "../../components/NewPost/NewPost";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import "./Blog.css";
 
@@ -21,10 +21,22 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/new-post">New Post</a>
+                <Link
+                  to={
+                    //now page won't reload. just content will
+                    {
+                      //use dif property
+                      pathname: "./new-post",
+                      hash: "#submit",
+                      search: "/quick-submit=true",
+                    }
+                  }
+                >
+                  New Post
+                </Link>
               </li>
             </ul>
           </nav>
