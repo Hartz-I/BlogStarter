@@ -1,74 +1,52 @@
 import React, { Component } from "react";
-import axiosInstance from "../../axiosInstance";
-import Post from "../../components/Post/Post";
-import FullPost from "../../components/FullPost/FullPost";
-import NewPost from "../../components/NewPost/NewPost";
+// import Post from "../../components/Post/Post";
+// import FullPost from "../FullPost/FullPost";
+// import NewPost from "../../components/NewPost/NewPost";
+import { Route } from "react-router-dom";
+
 import "./Blog.css";
 
+import Posts from "./Posts/Posts";
+import NewPost from "./NewPost/NewPost";
+
+// routing to index.js or app.js
+//full post and new post can be containers cuz now they will be new pages each with own state
+
 class Blog extends Component {
-  state = {
-    posts: [],
-    selectedPostId: null,
-    error: false,
-  };
-
-  componentDidMount() {
-    axiosInstance
-      .get("/posts") //short cuz URL is set default
-      //then executes after the request is finished
-      .then((resnponse) => {
-        const posts = resnponse.data.slice(0, 4); //to get relive from too many data
-        const updatedPosts = posts.map((post) => {
-          return {
-            ...post,
-            author: "Ahnaf", //can work with the data we get back
-          };
-        });
-
-        //set state won't work outside cuz JS doesn't work while the data is fetched
-        this.setState({ posts: updatedPosts });
-        //console.log(resnponse); ///see what's inside
-      })
-      .catch((error) => {
-        //handles error locally
-        //console.log(error);
-        //global handling is in index.js
-        this.setState({ error: true });
-      });
-  }
-
-  postSelectedHandler = (id) => {
-    this.setState({ selectedPostId: id });
-  };
-
   render() {
-    //using catch error we can render when error is made!
-    let posts = <p>Something went wrong!!</p>;
-    //map what the posts are
-    if (!this.state.error) {
-      posts = this.state.posts.map((post) => {
-        return (
-          <Post
-            title={post.title}
-            key={post.id}
-            author={post.author}
-            clicked={() => {
-              this.postSelectedHandler(post.id);
-            }}
-          />
-        );
-      });
-    }
-
     return (
-      <div>
-        <section className="Posts">{posts}</section>
-        <section>
-          <FullPost id={this.state.selectedPostId} />
-        </section>
-        <section>
-          <NewPost />
-        </section>
+      <div className="Blog">
+        {null /* nav links */}
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/new-post">New Post</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        {/* <Route
+          //if multiple route has same path 2nd one will show belo first one
+          path="/"
+          render={() => <h1>Home1</h1>}
+        />
+        <Route
+          //if multiple route has same path 2nd one will show belo first one
+          path="/"
+          exact={true /**only for / not new-post }
+          render={() => <h1>Home2</h1>}
+        /> */}
+        <Route path="/" exact component={Posts} />
+        <Route
+          path="/new-post"
+          exact={true /**only for / not new-post */}
+          //render={() => <NewPost />} shouln't use render to load component
+          component={NewPost}
+        />
       </div>
     );
   }
