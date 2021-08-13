@@ -8,18 +8,16 @@ class FullPost extends Component {
     loadedPost: null,
   };
 
-  componentDidMount() {
-    console.log(this.props);
+  componentDidUpdate() {
     //first checking if we have id
-    //passing the id in a different way. from match property. which gets the id from passing it in route
-    if (this.props.match.params.id) {
+    if (this.props.id) {
       if (
         //then making sure only one req gets sent
         !this.state.loadedPost ||
         (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
       )
         //getting data based on id
-        axios.get("/posts/" + this.props.match.params.id).then((response) => {
+        axios.get("/posts/" + this.props.id).then((response) => {
           //   console.log(response);
 
           this.setState({ loadedPost: response.data });
@@ -37,7 +35,7 @@ class FullPost extends Component {
   render() {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
 
-    if (this.props.match.params.id) {
+    if (this.props.id) {
       post = <p style={{ textAlign: "center" }}>Loading...</p>;
     }
 

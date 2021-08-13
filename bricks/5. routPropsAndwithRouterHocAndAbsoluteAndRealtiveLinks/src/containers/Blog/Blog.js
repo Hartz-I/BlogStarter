@@ -4,14 +4,12 @@ import React, { Component } from "react";
 // import NewPost from "../../components/NewPost/NewPost";
 
 //use links instead of A for routing links
-import { Route, NavLink, Switch } from "react-router-dom";
-//Link doesn't have active class but NavLink does
+import { Route, Link } from "react-router-dom";
 
 import "./Blog.css";
 
 import Posts from "./Posts/Posts";
 import NewPost from "./NewPost/NewPost";
-import FullPost from "./FullPost/FullPost";
 
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
@@ -25,22 +23,15 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <NavLink
-                  to="/"
-                  exact /** need exact to be active only when is clicked */
-                  //activeClassName to set active class manually
-                  //activeStyle property to inline style
-                >
-                  Home
-                </NavLink>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <NavLink
+                <Link
                   to={
                     //now page won't reload. just content will
                     {
                       //use dif property
-                      pathname: "/new-post", //always gives a absolute path
+                      pathname: "/new-posts", //always gives a absolute path
                       //pathname: this.props.match.url + "./new-post", //gives a relative path
                       hash: "#submit",
                       search: "/quick-submit=true",
@@ -48,7 +39,7 @@ class Blog extends Component {
                   }
                 >
                   New Post
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -64,20 +55,13 @@ class Blog extends Component {
           exact={true /**only for / not new-post }
           render={() => <h1>Home2</h1>}
         /> */}
-        <Switch /** it on let's to load one of them */>
-          <Route path="/" exact component={Posts} />
-          <Route
-            path="/new-post"
-            exact={true /**only for / not new-post */}
-            //render={() => <NewPost />} shouln't use render to load component
-            component={NewPost}
-          />
-          <Route
-            path="/:id" //this gives a flexible path //now for the error changing the name would work but we'll use a package
-            exact
-            component={FullPost} /*the link is in posts each post*/
-          />
-        </Switch>
+        <Route path="/" exact component={Posts} />
+        <Route
+          path="/new-post"
+          exact={true /**only for / not new-post */}
+          //render={() => <NewPost />} shouln't use render to load component
+          component={NewPost}
+        />
       </div>
     );
   }
