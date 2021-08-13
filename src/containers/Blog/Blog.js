@@ -2,6 +2,8 @@ import React, { Component } from "react";
 // import Post from "../../components/Post/Post";
 // import FullPost from "../FullPost/FullPost";
 // import NewPost from "../../components/NewPost/NewPost";
+
+//use links instead of A for routing links
 import { Route, Link } from "react-router-dom";
 
 import "./Blog.css";
@@ -29,7 +31,8 @@ class Blog extends Component {
                     //now page won't reload. just content will
                     {
                       //use dif property
-                      pathname: "./new-post",
+                      pathname: "/new-posts", //always gives a absolute path
+                      //pathname: this.props.match.url + "./new-post", //gives a relative path
                       hash: "#submit",
                       search: "/quick-submit=true",
                     }

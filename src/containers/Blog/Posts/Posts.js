@@ -10,6 +10,8 @@ class Posts extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
+
     axiosInstance
       .get("/posts") //short cuz URL is set default
       //then executes after the request is finished
