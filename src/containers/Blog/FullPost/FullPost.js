@@ -10,13 +10,26 @@ class FullPost extends Component {
 
   componentDidMount() {
     console.log(this.props);
+    this.loadData();
+  }
+
+  //if working with router if a same component needs to be reloaded one must use Compont did update
+  componentDidUpdate() {
+    //need this in both so created mathod
+    this.loadData();
+  }
+
+  //have to correct id check everywhere to work
+
+  loadData() {
     //first checking if we have id
     //passing the id in a different way. from match property. which gets the id from passing it in route
     if (this.props.match.params.id) {
       if (
         //then making sure only one req gets sent
         !this.state.loadedPost ||
-        (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
+        (this.state.loadedPost && //adding plus makes string a number
+          this.state.loadedPost.id !== +this.props.match.params.id)
       )
         //getting data based on id
         axios.get("/posts/" + this.props.match.params.id).then((response) => {
@@ -29,7 +42,7 @@ class FullPost extends Component {
 
   deletePostHandler = () => {
     //sending delete request is also easy
-    axios.delete("/posts/" + this.props.id).then((response) => {
+    axios.delete("/posts/" + this.props.match.params.id).then((response) => {
       console.log(response);
     });
   };
