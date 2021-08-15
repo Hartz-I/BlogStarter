@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axiosInstance from "../../../axiosInstance";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+//doing it programmatically in click listener
 
 import "./Posts.css";
 import Post from "../../../components/Post/Post";
@@ -39,7 +40,11 @@ class Posts extends Component {
   }
 
   postSelectedHandler = (id) => {
-    this.setState({ selectedPostId: id });
+    //access the functions in history : console log to se
+
+    //going to the link with id
+    this.props.history.push({ pathname: "/" + id });
+    // this.props.history.push("/" + id );
   };
 
   render() {
@@ -49,15 +54,15 @@ class Posts extends Component {
     if (!this.state.error) {
       posts = this.state.posts.map((post) => {
         return (
-          <Link to={"/" + post.id} key={post.id}>
-            <Post
-              title={post.title}
-              author={post.author}
-              clicked={() => {
-                this.postSelectedHandler(post.id);
-              }}
-            />
-          </Link>
+          // <Link to={"/" + post.id} key={post.id}>
+          <Post
+            title={post.title}
+            author={post.author}
+            clicked={() => {
+              this.postSelectedHandler(post.id);
+            }}
+          />
+          // </Link>
         );
       });
     }
