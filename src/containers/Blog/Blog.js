@@ -11,7 +11,7 @@ import "./Blog.css";
 
 import Posts from "./Posts/Posts";
 import NewPost from "./NewPost/NewPost";
-import FullPost from "./FullPost/FullPost";
+//import FullPost from "./FullPost/FullPost"; not needed as nested
 
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
@@ -65,18 +65,18 @@ class Blog extends Component {
           render={() => <h1>Home2</h1>}
         /> */}
         <Switch /** it on let's to load one of them */>
-          <Route path="/" exact component={Posts} />
           <Route
             path="/new-post"
             exact={true /**only for / not new-post */}
             //render={() => <NewPost />} shouln't use render to load component
             component={NewPost}
           />
-          <Route
+          <Route path="/" component={Posts} />
+          {/* <Route
             path="/:id" //this gives a flexible path //now for the error changing the name would work but we'll use a package
             exact
-            component={FullPost} /*the link is in posts each post*/
-          />
+            component={FullPost} /*the link is in posts each post //going to nested route
+          /> */}
         </Switch>
       </div>
     );

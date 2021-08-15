@@ -3,6 +3,9 @@ import axiosInstance from "../../../axiosInstance";
 
 // import { Link } from "react-router-dom";
 //doing it programmatically in click listener
+//for nested route
+import { Route } from "react-router-dom";
+import FullPost from "../FullPost/FullPost";
 
 import "./Posts.css";
 import Post from "../../../components/Post/Post";
@@ -67,7 +70,19 @@ class Posts extends Component {
         );
       });
     }
-    return <section className="Posts">{posts}</section>;
+    return (
+      <div>
+        <section className="Posts">{posts}</section>
+        <Route //it's nested in route in blog.js
+          path={
+            this.props.match.url +
+            ":id" /* made into a relative path. so route change can't effect */
+          } //this gives a flexible path //now for the error changing the name would work but we'll use a package
+          exact
+          component={FullPost} /*the link is in posts each post */
+        />
+      </div>
+    );
   }
 }
 
