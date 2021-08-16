@@ -40,7 +40,7 @@ class SideBar extends Component {
         onMouseOver={this.MouseOverHandler}
         onMouseOut={this.MouseOutHandler}
       >
-        <p style={this.state.titleStyle}>Title</p>
+        <p style={this.state.titleStyle}>Icon</p>
         <SideBarItems style={this.state.style} />
       </div>
     );
