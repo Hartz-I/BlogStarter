@@ -13,6 +13,8 @@ import Posts from "./Posts/Posts";
 import NewPost from "./NewPost/NewPost";
 //import FullPost from "./FullPost/FullPost"; not needed as nested
 
+import SideBar from "../../components/SideBar/SideBar";
+
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
 
@@ -53,6 +55,9 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
+        <section>
+          <SideBar />
+        </section>
         {/* <Route
           //if multiple route has same path 2nd one will show belo first one
           path="/"
