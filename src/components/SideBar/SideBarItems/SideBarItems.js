@@ -10,6 +10,7 @@ const sideBarItems = (props) => {
   const items = itemNames.map((item) => {
     return (
       <SideBarItem
+        key={item}
         itemName={item}
         over={props.over}
         out={props.out}

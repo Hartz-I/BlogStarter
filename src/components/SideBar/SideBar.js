@@ -8,9 +8,18 @@ class SideBar extends Component {
     style: {
       display: "none",
     },
+    titleStyle: null,
   };
   MouseOverHandler = () => {
-    this.setState({ style: null });
+    this.setState({
+      style: null,
+      titleStyle: {
+        backgroundColor: "white",
+        borderRadius: "5px",
+        color: "black",
+        transform: "rotate(180deg)",
+      },
+    });
   };
 
   MouseOutHandler = () => {
@@ -18,17 +27,21 @@ class SideBar extends Component {
       style: {
         display: "none",
       },
+      titleStyle: {
+        color: "white",
+      },
     });
   };
 
   render() {
     return (
-      <div className="SideBar">
-        <SideBarItems
-          Over={this.MouseOverHandler}
-          out={this.MouseOutHandler}
-          style={this.state.style}
-        />
+      <div
+        className="SideBar"
+        onMouseOver={this.MouseOverHandler}
+        onMouseOut={this.MouseOutHandler}
+      >
+        <p style={this.state.titleStyle}>Title</p>
+        <SideBarItems style={this.state.style} />
       </div>
     );
   }

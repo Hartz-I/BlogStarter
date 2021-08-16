@@ -9,7 +9,7 @@ class SideBarItem extends Component {
         onMouseOver={this.props.over}
         onMouseOut={this.props.out}
       >
-        <div className="ItemLogo">Logo</div>
+        <div className="ItemLogo gg-home">Logo</div>
         <div className="ItemTitle" style={this.props.style}>
           {this.props.itemName}
         </div>

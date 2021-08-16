@@ -13,18 +13,28 @@
 
 .ItemTitle {
   color: black;
-  height: 30px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 
+  height: 30px;
   border-radius: 5px;
   text-align: center;
+  font-weight: 700;
 
   width: 80px;
+  height: 20px;
 
   padding: 16px;
   margin: 16px 0;
 
   animation: moveInLeft 1s ease;
+
+  transition: 0.15s ease-in;
+  cursor: pointer;
+}
+
+.ItemTitle:hover {
+  color: white;
+  background-color: rgb(7, 35, 88);
 }
 
 @keyframes moveInLeft {
