@@ -5,7 +5,7 @@ import SideBarItem from "./SideBarItem/SideBarItem";
 import "./SideBarItems.module.css";
 
 const sideBarItems = (props) => {
-  const itemNames = ["Home", "Contact", "About", "Ahnaf"];
+  const itemNames = ["Home", "Contact", "About", "Sadik"];
 
   const items = itemNames.map((item) => {
     return <SideBarItem key={item} itemName={item} style={props.style} />;
