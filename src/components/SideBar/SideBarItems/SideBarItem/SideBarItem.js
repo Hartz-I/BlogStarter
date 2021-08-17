@@ -5,7 +5,9 @@ class SideBarItem extends Component {
   render() {
     return (
       <div className="SideBarItem">
-        <div className="ItemLogo gg-home">Logo</div>
+        <div className="ItemLogo">
+          <img src={this.props.logo} alt="icon" />
+        </div>
         <div className="ItemTitle" style={this.props.style}>
           {this.props.itemName}
         </div>
