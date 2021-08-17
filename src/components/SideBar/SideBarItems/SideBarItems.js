@@ -5,13 +5,14 @@ import { NavLink } from "react-router-dom";
 
 import browserIcon from "../../../assets/icons/fi-rr-browser.svg";
 import homeIcon from "../../../assets/icons/fi-rr-home.svg";
-
+import aboutIcon from "../../../assets/icons/fi-rr-info.svg";
 import "./SideBarItems.module.css";
 
 const sideBarItems = (props) => {
   const itemNames = {
     Posts: ["/", homeIcon],
     "New Post": ["/new-post", browserIcon],
+    About: ["/", aboutIcon],
   };
 
   const items = Object.keys(itemNames).map((item) => {

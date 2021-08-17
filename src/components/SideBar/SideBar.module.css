@@ -11,7 +11,7 @@
   flex-flow: column;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
-  transition: width 0.5s;
+  transition: width 0.3s;
 }
 
 .SideBar:hover,

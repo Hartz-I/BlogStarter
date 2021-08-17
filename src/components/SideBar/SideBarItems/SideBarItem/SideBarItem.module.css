@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-.ItemLogo {
+.SideBarItem .ItemLogo {
   color: white;
   height: 30px;
   width: 30px;
@@ -14,7 +14,15 @@
   top: -5px;
 }
 
-.ItemTitle {
+.SideBarItem .ItemLogo:hover {
+  opacity: 0.6;
+}
+
+.SideBarItem .ItemLogo:active {
+  opacity: 0.4;
+}
+
+.SideBarItem .ItemTitle {
   color: black;
   background-color: rgb(255, 255, 255);
 
@@ -35,9 +43,18 @@
   cursor: pointer;
 }
 
-.ItemTitle:hover {
+.SideBarItem .ItemTitle:hover {
   color: white;
-  background-color: rgb(7, 35, 88);
+  background-color: rgb(14, 71, 177);
+  transform: translateY(-2px);
+  box-shadow: 0 1px 2px black;
+}
+
+.SideBarItem .ItemTitle:active {
+  color: white;
+  background-color: rgb(19, 90, 221);
+  transform: translateY(0px);
+  box-shadow: 0 0.5px 1px black;
 }
 
 @keyframes moveInLeft {
