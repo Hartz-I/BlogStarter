@@ -13,6 +13,7 @@ class SideBar extends Component {
     titleStyle: null,
   };
 
+  //controling hover manually
   MouseOverHandler = () => {
     this.setState({
       style: null,
@@ -33,7 +34,8 @@ class SideBar extends Component {
         display: "none",
       },
       titleStyle: {
-        color: "white",
+        height: "50px", //keeping the effect even after moving mouse out
+        width: "50px",
       },
     });
   };
@@ -46,7 +48,7 @@ class SideBar extends Component {
         onMouseOut={this.MouseOutHandler}
       >
         <p style={this.state.titleStyle}>
-          <img src={arrow} />
+          <img src={arrow} alt="icon" />
         </p>
         <SideBarItems style={this.state.style} />
       </div>
