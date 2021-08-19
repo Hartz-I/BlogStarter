@@ -17,7 +17,7 @@ const sideBarItems = (props) => {
 
   const items = Object.keys(itemNames).map((item) => {
     return (
-      <NavLink to={itemNames[item][0]}>
+      <NavLink to={itemNames[item][0]} key = {itemNames[item][1]}>
         <SideBarItem
           key={item}
           itemName={item}

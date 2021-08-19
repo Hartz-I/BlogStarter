@@ -46,7 +46,7 @@ class Posts extends Component {
     //access the functions in history : console log to se
 
     //going to the link with id
-    this.props.history.push({ pathname: "/" + id });
+    this.props.history.push({ pathname: "/posts/" + id });
     // this.props.history.push("/" + id );
   };
 
@@ -76,7 +76,7 @@ class Posts extends Component {
         <Route //it's nested in route in blog.js
           path={
             this.props.match.url +
-            ":id" /* made into a relative path. so route change can't effect */
+            "/:id" /* made into a relative path. so route change can't effect */
           } //this gives a flexible path //now for the error changing the name would work but we'll use a package
           exact
           component={FullPost} /*the link is in posts each post */

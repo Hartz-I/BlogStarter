@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import NewPost from "../../components/NewPost/NewPost";
 
 //use links instead of A for routing links
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 //Link doesn't have active class but NavLink does
 
 import "./Blog.css";
@@ -28,7 +28,7 @@ class Blog extends Component {
             <ul>
               <li>
                 <NavLink
-                  to="/" //should use /posts. but will keep it here
+                  to="/posts/" //should use /posts. but will keep it here
                   exact /** need exact to be active only when is clicked */
                   //activeClassName to set active class manually
                   //activeStyle property to inline style
@@ -76,12 +76,16 @@ class Blog extends Component {
             //render={() => <NewPost />} shouln't use render to load component
             component={NewPost}
           />
-          <Route path="/" component={Posts} />
+          <Route path="/posts/" component={Posts} />
           {/* <Route
             path="/:id" //this gives a flexible path //now for the error changing the name would work but we'll use a package
             exact
             component={FullPost} /*the link is in posts each post //going to nested route
           /> */}
+
+          {/**redirecting */}
+          {/* <Route path="/" component={Posts} /> */}
+          <Redirect from = "/" to = "/posts" /** changes the url */ />
         </Switch>
       </div>
     );
