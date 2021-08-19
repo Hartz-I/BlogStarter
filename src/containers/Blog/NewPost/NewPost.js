@@ -24,7 +24,12 @@ class NewPost extends Component {
     //as simple as that! sending/posting data to server
     axios.post("/posts", data).then((response) => {
       //console.log(response);
-      this.setState({submitted: true})
+      // this.setState({submitted: true}) //this has a downside that the back button won't go back previous page
+
+      //we can also redirect without changing the state
+
+      this.props.history.push('/') //gives the same result!!
+      //but to find exact behavior use this.props.history.replace
     });
   };
 
