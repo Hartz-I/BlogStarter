@@ -17,8 +17,16 @@ import SideBar from "../../components/SideBar/SideBar";
 
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
+//redirecting here and  in new post
 
+//guard is managed by state: also can be used in the ComponentDIdMount of the component we want to gaurd
 class Blog extends Component {
+
+  //guard
+  state = {
+    auth: false
+  }
+
   render() {
     return (
       <div className="Blog">
@@ -70,12 +78,12 @@ class Blog extends Component {
           render={() => <h1>Home2</h1>}
         /> */}
         <Switch /** it on let's to load one of them */>
-          <Route
+          { this.state.auth ? <Route //applied the guard. now it won't be rendered unless authenticated!
             path="/new-post"
             exact={true /**only for / not new-post */}
             //render={() => <NewPost />} shouln't use render to load component
             component={NewPost}
-          />
+          /> : null} 
           <Route path="/posts/" component={Posts} />
           {/* <Route
             path="/:id" //this gives a flexible path //now for the error changing the name would work but we'll use a package
