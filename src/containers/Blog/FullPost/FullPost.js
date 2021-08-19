@@ -29,7 +29,7 @@ class FullPost extends Component {
         //then making sure only one req gets sent
         !this.state.loadedPost ||
         (this.state.loadedPost && //adding plus makes string a number
-          this.state.loadedPost.id !== +this.props.match.params.id)
+          this.state.loadedPost.id !== +this.props.match.params.id) //params id returns a string
       )
         //getting data based on id
         axios.get("/posts/" + this.props.match.params.id).then((response) => {
