@@ -93,7 +93,10 @@ class Blog extends Component {
 
           {/**redirecting */}
           {/* <Route path="/" component={Posts} /> */}
-          <Redirect from = "/" to = "/posts" /** changes the url */ />
+          {/* <Redirect from = "/" to = "/posts" /** changes the url * /> */}
+
+          {/**using 404 not found. root has to be disabl */}
+          <Route render = {()=> <h1>404 Not found</h1>}/>
         </Switch>
       </div>
     );
