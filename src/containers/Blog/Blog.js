@@ -10,10 +10,19 @@ import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import "./Blog.css";
 
 import Posts from "./Posts/Posts";
-import NewPost from "./NewPost/NewPost";
+
 //import FullPost from "./FullPost/FullPost"; not needed as nested
 
 import SideBar from "../../components/SideBar/SideBar";
+
+//old way of importing. 
+//import NewPost from "./NewPost/NewPost";
+
+//importing asynchronusly
+import aysncComponent from "../../hoc/asyncComponent";
+const AsyncNewPost = aysncComponent(() => {
+  return import("./NewPost/NewPost"); //only imports when the function is exicuted
+});
 
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
@@ -24,7 +33,7 @@ class Blog extends Component {
 
   //guard
   state = {
-    auth: false
+    auth: true
   }
 
   render() {
@@ -82,7 +91,7 @@ class Blog extends Component {
             path="/new-post"
             exact={true /**only for / not new-post */}
             //render={() => <NewPost />} shouln't use render to load component
-            component={NewPost}
+            component={AsyncNewPost}
           /> : null} 
           <Route path="/posts/" component={Posts} />
           {/* <Route
