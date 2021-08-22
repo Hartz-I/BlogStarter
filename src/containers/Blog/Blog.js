@@ -24,6 +24,10 @@ const AsyncNewPost = aysncComponent(() => {
   return import("./NewPost/NewPost"); //only imports when the function is exicuted
 });
 
+//for above react 16.6 simply use
+// const NewPost = React.lazy(() => import('location')}) and watch the vide
+// it is easier
+
 // routing to index.js or app.js
 //full post and new post can be containers cuz now they will be new pages each with own state
 //redirecting here and  in new post
